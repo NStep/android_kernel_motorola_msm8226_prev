@@ -416,7 +416,9 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 					test_tsk_thread_flag(p, TIF_MEMDIE))) {
 			lowmem_print(2, "skip slow dying process %d\n", p->pid);
 			task_unlock(p);
+
 			continue;
+#endif
 		}
 		tasksize = get_mm_rss(p->mm);
 		task_unlock(p);
@@ -634,7 +636,6 @@ void delete_from_adj_tree(struct task_struct *task)
 	spin_unlock(&lmk_lock);
 }
 
-
 static struct task_struct *pick_next_from_adj_tree(struct task_struct *task)
 {
 	struct rb_node *next;
@@ -646,7 +647,7 @@ static struct task_struct *pick_next_from_adj_tree(struct task_struct *task)
 	if (!next)
 		return NULL;
 
-	 return rb_entry(next, struct task_struct, adj_node);
+	return rb_entry(next, struct task_struct, adj_node);
 }
 
 static struct task_struct *pick_first_task(void)
