@@ -393,7 +393,7 @@ void __ref intelli_plug_perf_boost(bool on)
 	}
 }
 
-/* sysfs interface for performance boost (BEGIN) */
+/* sysfs interface for performance boost (BEGIN) 
 static ssize_t intelli_plug_perf_boost_store(struct kobject *kobj,
 			struct kobj_attribute *attr, const char *buf,
 			size_t count)
@@ -430,7 +430,7 @@ static struct attribute_group intelli_plug_perf_boost_attr_group = {
 };
 
 static struct kobject *intelli_plug_perf_boost_kobj;
-/* sysfs interface for performance boost (END) */
+ sysfs interface for performance boost (END) */
 
 #ifdef CONFIG_POWERSUSPEND
 static void intelli_plug_suspend(struct power_suspend *handler)
@@ -634,7 +634,7 @@ int __init intelli_plug_init(void)
 	queue_delayed_work_on(0, intelliplug_wq, &intelli_plug_work,
 		msecs_to_jiffies(10));
 
-	intelli_plug_perf_boost_kobj
+	/*intelli_plug_perf_boost_kobj
 		= kobject_create_and_add("intelli_plug", kernel_kobj);
 
 	if (!intelli_plug_perf_boost_kobj) {
@@ -646,7 +646,7 @@ int __init intelli_plug_init(void)
 
 	if (rc)
 		kobject_put(intelli_plug_perf_boost_kobj);
-
+	*/
 	return 0;
 }
 
