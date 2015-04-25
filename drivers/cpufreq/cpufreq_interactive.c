@@ -857,8 +857,12 @@ static ssize_t show_above_hispeed_delay(
 		ret += sprintf(buf + ret, "%u%s", above_hispeed_delay[i],
 			       i & 0x1 ? ":" : " ");
 
+<<<<<<< HEAD
 	--ret;
 	ret += sprintf(buf + ret, "\n");
+=======
+	sprintf(buf + ret - 1, "\n");
+>>>>>>> 77cbf415bd45554751aef2638a245dba6a5a113d
 	spin_unlock_irqrestore(&above_hispeed_delay_lock, flags);
 	return ret;
 }
