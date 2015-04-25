@@ -33,6 +33,8 @@ int simple_gpu_algorithm(int level,
 {
 	int val;
 
+	val = 0;
+
 	/* it's currently busy */
 	if (priv->bin.busy_time > ramp_up_threshold) {
 		if (level == 0)
